@@ -11,17 +11,13 @@
         v-if="isAuthenticated && $route.path == '/'"
         @selected="$router.push(`/streams/${$event.id}`)"
       />
-      <div v-else-if="stream" class="font-weight-bold cursor-pointer" @click="navigateToCommitPage">{{ stream.name }}</div>
+      <div v-else-if="stream" class="font-weight-bold cursor-pointer" @click="navigateToCommitPage">
+        {{ stream.name }}
+      </div>
 
       <v-spacer></v-spacer>
 
-      <v-btn
-        class="ma-2"
-        small
-        outlined
-        v-if="!isAuthenticated"
-        @click="$store.dispatch('login')"
-      >
+      <v-btn class="ma-2" small outlined v-if="!isAuthenticated" @click="$store.dispatch('login')">
         <span>Login/Register</span>
       </v-btn>
       <v-menu v-else offset-y open-on-hover>
@@ -64,7 +60,7 @@ export default {
   components: { StreamSearch },
   data() {
     return {
-      serverUrl: process.env.VUE_APP_SERVER_URL,
+      serverUrl: process.env.VUE_APP_SERVER_URL
     };
   },
   computed: {
@@ -79,18 +75,18 @@ export default {
     },
     stream() {
       return this.$store.getters.streamDetails;
-    },
+    }
   },
   methods: {
-    navigateStream: function() {
-      this.$router.push('/');
+    navigateStream: function () {
+      this.$router.push("/");
     },
-    navigateToCommitPage(){
+    navigateToCommitPage() {
       if (this.streamId) {
         this.$router.push(`/streams/${this.streamId}`);
       }
     }
-  },
+  }
 };
 </script>
 
@@ -106,7 +102,7 @@ $heading-font-family: "Space Grotesk";
 .fade-leave-to {
   opacity: 0;
 }
-.cursor-pointer{
+.cursor-pointer {
   cursor: pointer;
 }
 </style>

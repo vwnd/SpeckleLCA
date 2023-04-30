@@ -1,3 +1,9 @@
-import { defineStore } from 'pinia'
+import { defineStore } from "pinia";
 
-export const useMainStore = defineStore('main', () => {})
+export const useStore = defineStore("main", () => {
+  function login() {
+    throw new Error("Not Implemented.");
+  }
+
+  return { login };
+});
